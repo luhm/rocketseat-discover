@@ -11,7 +11,7 @@ function toggleMode() {
   if (html.classList.contains("light-mode")) {
     img.setAttribute("src", "./assets/foto_luiza.png")
   } else {
-    img.setAttribute("src", "./assets/avatar.png")  
+    img.setAttribute("src", "./assets/foto_luiza_dark.png")  
   }
   if (html.classList.contains("light-mode")) {
     img.setAttribute(
