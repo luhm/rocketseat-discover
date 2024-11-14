@@ -96,11 +96,18 @@ h1 {
   z-index: 1;
   transform: translateY(-50%);
   /*position absolute libera a função z-index que pode andar pela página toda, então esse bot~~ao poderia ser colocado em qualquer lugar da página*/
+  animation: slide-out 0.4s;
 }
 
 .light-mode #switch button {
-  right: 0;
+  /*right: 0;
   left: initial;
+  trocamos essas propriedades pela animação criada la no final desse doc css*/
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--bg-social-hover);
 }
 
 #switch span {
@@ -198,5 +205,25 @@ ul li:hover {
   .light-mode {
     --bg-color-url: url(./assets/bg-desktop-light.jpg);
   }
-/*essa regra só funciona se tive, no HTML, a parte de metaviewport: <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
+  /*essa regra só funciona se tive, no HTML, a parte de metaviewport: <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
 }
+
+/*at-rule de animação: o nome dela é keyframes; depois eu coloco como eu quero chama-la (slide-in)*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%
+  }
+  to {
+    left: 0
+  }
+}
+
