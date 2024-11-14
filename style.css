@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  /*padding é o espaço interno da caixa, entre a borda e o elemento*/
+  padding: 0;
+  /*box sizing é a medida da caixa, que é estipulada abaixo em cada caixa específica, tipo na caixa container*/
+  box-sizing: border-box;
+}
+
+:root {
+  /*vamos criar uma variável que vai se aplicar à raiz do projeto, ou seja, a tudo*/
+  --text-color: white;
+  --bg-color-url: url(./assets/bg-mobile.jpg);
+  --border-color-links: rgba(255, 255, 255, 0.5);
+  --bg-color-links: rgba(255, 255, 255, 0.1);
+  --bg-social-hover: rgba(255, 255, 255, 0.2);
+  --switch-button: url(./assets/moon-stars.svg);
+}
+
+.light-mode {
+  --text-color: black;
+  --bg-color-url: url(./assets/bg-mobile-light-2.png);
+  --border-color-links: rgba(0, 0, 0, 0.5);
+  --bg-color-links: rgba(0, 0, 0, 0.05);
+  --bg-social-hover: rgba(0, 0, 0, 0.05);
+  --switch-button: url(./assets/sun.svg);
+}
+
+body {
+  /*background-color: burlywood;
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;*/
+
+  /*background: color image repeat position/size */
+  background: purple var(--bg-color-url) no-repeat top center/cover;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  height: 100%;
+}
+
+h1 {
+  font-family: "inter", sans-serif;
+  color: whitesmoke;
+}
+
+#container0 {
+  /*border: 2px solid coral;
+  width: 360px;*/
+  max-width: 588px;
+  width: 100%;
+  /*height: 720px;*/
+  /*margin é uma propriedade, assim como padding, que o css conta no sentido horário, então é possível colocar até 4 diferentes, ex: margin: 56px auto 0px auto, e ele vai considerar cima, direita, baixo esquerda*/
+  margin: 56px auto 0px;
+  /*se eu fizer padding top, vai adicionar espaço dentro da caixa, se eu fizer margin-top, vai adicionar fora e ficaria:
+  padding-top: 56px;*/
+}
+
+/*profile*/
+#profile0 {
+  text-align: center;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 24px;
+  /*border: 2px solid yellow;*/
+}
+
+#profile0 img {
+  width: 112px;
+  height: 112px;
+  display: block;
+  margin: auto;
+}
+
+#profile0 p {
+  margin-top: 8px;
+}
+
+/*switch*/
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-button) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  /*position absolute libera a função z-index que pode andar pela página toda, então esse bot~~ao poderia ser colocado em qualquer lugar da página*/
+  animation: slide-out 0.4s;
+}
+
+.light-mode #switch button {
+  /*right: 0;
+  left: initial;
+  trocamos essas propriedades pela animação criada la no final desse doc css*/
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--bg-social-hover);
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--bg-color-links);
+  border: 1px solid var(--border-color-links);
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/*lista de links*/
+ul {
+  list-style: none;
+  /*display: flex, por padrão, é row, e ele tentaria encaixar todos na mesma linha. No meu design, como já configurei margin e padding, ele coloca todos e acaba escapulindo da margem do container, mas sem esses dados de margin e padding, daria certo; colocamos a direção column pra não ficar na mesma linha e sim verticalizado, e o gap de 16px acaba sendo aplicado a todos os elementos de ul(nesse caso, todos os li's; se tivessemos usando dentro de a, seriam todos os textos e isso seria bom se houvesse mais de um texto ali dentro) e aí já coloca a separação entre eles
+  display: flex;
+  flex-direction: column;
+  gap: 16px;*/
+}
+
+/*sempre colocar a hierarquia que ele faz parte, tipo ul li e não apenas li*/
+ul li {
+  display: block;
+  margin: 16px 24px 16px 24px;
+  padding: 16px 24px 16px 24px;
+  text-align: center;
+  border: 1px solid var(--border-color-links);
+  background-color: var(--bg-color-links);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  /*webkit é um prefixo que alguns browsers usam para aceitar e aplicar essa características*/
+  transition: background 0.2s;
+}
+
+ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+ul li:hover {
+  border: 1.5px solid rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#link1 {
+  margin-top: 24px;
+}
+
+#link4 {
+  margin-bottom: 24px;
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+  /*gap: 16px;
+  não é necessário esse gap pois, ao colocar o padding de 16px no "a" abaixo, ele já faz a função do gap*/
+  padding: 24px, 0px;
+  font-size: 24px;
+}
+
+#social-links a {
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  /*passamos o border-radius para cá pois, sem ele, o transition tava considerando a borda quadrada além da circular e ta feio*/
+}
+
+#social-links a:hover {
+  background: var(--bg-social-hover);
+  border-radius: 50%;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 24px;
+}
+
+/*media queries - no css sempre que começa com @ a gente chama de at-rule, e é uma regra que vamos implementar. É como dizer que, acima de 700px, tais regras serão adicionadas/aplicadas*/
+@media (min-width: 700px) {
+  :root {
+    --bg-color-url: url(./assets/bg-desktop.jpg);
+  }
+  .light-mode {
+    --bg-color-url: url(./assets/bg-desktop-light.jpg);
+  }
+  /*essa regra só funciona se tive, no HTML, a parte de metaviewport: <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
+}
+
+/*at-rule de animação: o nome dela é keyframes; depois eu coloco como eu quero chama-la (slide-in)*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%
+  }
+  to {
+    left: 0
+  }
+}
+
